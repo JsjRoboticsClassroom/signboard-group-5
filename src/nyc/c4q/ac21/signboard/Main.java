@@ -115,15 +115,87 @@ public class Main {
         }
     }
 
+    /**
+     * Draws a scene which flashes the words "FRESH" and "HOT".
+     * @param board
+     *   The board on which to draw.
+     * @param cycles
+     *   The number of cycles to draw for.
+     */
+    public static void flashSalmonScene(SignBoard board, int cycles) {
+        Random random = new Random();
+        int width = board.getWidth();
+        int leftPosition = width / 4 - 12;
+        int rightPosition = 3 * width / 4 - 7;
+        int y = board.getHeight() / 2;
+
+        for (int i = 0; i < cycles * 3; ++i) {
+            SignBoard.Frame frame = board.newFrame();
+
+            // Choose a color at random.
+            int color = random.nextInt(4);
+            if (color == 0)
+                frame.setGreen();
+            else if (color == 1)
+                frame.setRed();
+            else if (color == 2)
+                frame.setWhite();
+            else
+                frame.setYellow();
+            // Write a word.
+            int row = 6;
+            if (i % row == 0) {
+                frame.write(rightPosition, y - 2, "");
+                frame.write(rightPosition, y - 1, "");
+                frame.write(rightPosition, y,     "                     ***");
+                frame.write(rightPosition, y + 1, "                    * @ *");
+                frame.write(rightPosition, y + 2, "                     ***");
+            } else if (i % row == 1) {
+                frame.write(rightPosition, y - 2, "");
+                frame.write(rightPosition, y - 1, "");
+                frame.write(rightPosition, y,     "             ***     ***");
+                frame.write(rightPosition, y + 1, "            * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "             ***     ***");
+            } else if (i % row == 2) {
+                frame.write(rightPosition, y - 2, "                 ***");
+                frame.write(rightPosition, y - 1, "                * @ *");
+                frame.write(rightPosition, y,     "             *** *** ***");
+                frame.write(rightPosition, y + 1, "            * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "             ***     ***");
+            } else if (i % row == 3) {
+                frame.write(rightPosition, y - 2, "                 ***");
+                frame.write(rightPosition, y - 1, "                * @ *");
+                frame.write(rightPosition, y,     "     ***     *** *** ***");
+                frame.write(rightPosition, y + 1, "    * @ *   * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "     ***     ***     ***");
+            } else if (i % row == 4) {
+                frame.write(rightPosition, y - 2, "         ***     ***");
+                frame.write(rightPosition, y - 1, "        * @ *   * @ *");
+                frame.write(rightPosition, y,     "     *** *** *** *** ***");
+                frame.write(rightPosition, y + 1, "    * @ *   * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "     ***     ***     ***");
+            } else {
+                frame.write(leftPosition, y - 2, " SSSS     AA    L      MM   MM  OOOO  NN   N");
+                frame.write(leftPosition, y - 1, "S        A  A   L      M M M M O    O N N  N");
+                frame.write(leftPosition, y,     " SSSS   AAAAAA  L      M  M  M O    O N  N N");
+                frame.write(leftPosition, y + 1, "     S  A    A  L      M     M O    O N   NN");
+                frame.write(leftPosition, y + 2, " SSSS   A    A  LLLLLL M     M  OOOO  N    N");
+            }
+            frame.finish(0.25);
+        }
+    }
+
     public static void main(String[] args) {
         SignBoard signBoard = new SignBoard(8);
 
         // Run the sign board forever.
         while (true) {
-            ribbonScene(signBoard, 48);
-            scrollTextScene(signBoard, "###  F A L A F E L  ###");
-            ribbonScene(signBoard, 48);
+            // ribbonScene(signBoard, 48);
+            // scrollTextScene(signBoard,  "SUSHI + CUPCAKES\nSUSHI + CUPCAKES\nSUSHI + CUPCAKES\n");
+            // ribbonScene(signBoard, 48);
+            flashSalmonScene(signBoard, 8);
             flashFreshHotScene(signBoard, 8);
         }
     }
 }
+
