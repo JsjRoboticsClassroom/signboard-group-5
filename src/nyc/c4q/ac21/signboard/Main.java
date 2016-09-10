@@ -47,7 +47,7 @@ public class Main {
      */
     public static void scrollTextScene(SignBoard board, String text) {
         int width = board.getWidth();
-        int y = board.getHeight() / 2;
+        int y = (board.getHeight() / 2) - 3;
         for (int x = -text.length(); x <= width; ++x) {
             SignBoard.Frame frame = board.newFrame();
 
@@ -56,7 +56,7 @@ public class Main {
 
             if (x < 0)
                 // Scrolling on to the left side.
-                frame.write(0, y, text.substring(-x));
+                frame.write(0, y, text.substring(x));
             else if (x + text.length() <= width)
                 // Fully on the board.
                 frame.write(x, y, text);
@@ -75,14 +75,14 @@ public class Main {
      * @param cycles
      *   The number of cycles to draw for.
      */
-    public static void flashFreshHotScene(SignBoard board, int cycles) {
+    public static void flashSalmonScene(SignBoard board, int cycles) {
         Random random = new Random();
         int width = board.getWidth();
         int leftPosition = width / 4 - 12;
         int rightPosition = 3 * width / 4 - 7;
         int y = board.getHeight() / 2;
 
-        for (int i = 0; i < cycles * 2; ++i) {
+        for (int i = 0; i < cycles * 3; ++i) {
             SignBoard.Frame frame = board.newFrame();
 
             // Choose a color at random.
@@ -96,34 +96,57 @@ public class Main {
             else
                 frame.setYellow();
             // Write a word.
-            if (i % 2 == 0) {
-                frame.write(leftPosition, y - 2, "FFFF RRR  EEEE  SSS H  H");
-                frame.write(leftPosition, y - 1, "F    R RR E    SS   H  H");
-                frame.write(leftPosition, y    , "FFR  RRR  EEE   SS  HHHH");
-                frame.write(leftPosition, y + 1, "F    R R  E      SS H  H");
-                frame.write(leftPosition, y + 2, "F    R  R EEEE SSS  H  H");
+            int row = 6;
+            if (i % row == 0) {
+                frame.write(rightPosition, y - 2, "");
+                frame.write(rightPosition, y - 1, "");
+                frame.write(rightPosition, y,     "                     ***");
+                frame.write(rightPosition, y + 1, "                    * @ *");
+                frame.write(rightPosition, y + 2, "                     ***");
+            } else if (i % row == 1) {
+                frame.write(rightPosition, y - 2, "");
+                frame.write(rightPosition, y - 1, "");
+                frame.write(rightPosition, y,     "             ***     ***");
+                frame.write(rightPosition, y + 1, "            * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "             ***     ***");
+            } else if (i % row == 2) {
+                frame.write(rightPosition, y - 2, "                 ***");
+                frame.write(rightPosition, y - 1, "                * @ *");
+                frame.write(rightPosition, y,     "             *** *** ***");
+                frame.write(rightPosition, y + 1, "            * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "             ***     ***");
+            } else if (i % row == 3) {
+                frame.write(rightPosition, y - 2, "                 ***");
+                frame.write(rightPosition, y - 1, "                * @ *");
+                frame.write(rightPosition, y,     "     ***     *** *** ***");
+                frame.write(rightPosition, y + 1, "    * @ *   * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "     ***     ***     ***");
+            } else if (i % row == 4) {
+                frame.write(rightPosition, y - 2, "         ***     ***");
+                frame.write(rightPosition, y - 1, "        * @ *   * @ *");
+                frame.write(rightPosition, y,     "     *** *** *** *** ***");
+                frame.write(rightPosition, y + 1, "    * @ *   * @ *   * @ *");
+                frame.write(rightPosition, y + 2, "     ***     ***     ***");
+            } else {
+                frame.write(leftPosition, y - 2, " SSSS     AA    L      MM   MM  OOOO  NN   N");
+                frame.write(leftPosition, y - 1, "S        A  A   L      M M M M O    O N N  N");
+                frame.write(leftPosition, y,     " SSSS   AAAAAA  L      M  M  M O    O N  N N");
+                frame.write(leftPosition, y + 1, "     S  A    A  L      M     M O    O N   NN");
+                frame.write(leftPosition, y + 2, " SSSS   A    A  LLLLLL M     M  OOOO  N    N");
             }
-            else {
-                frame.write(rightPosition, y - 2, "H  H  OO  TTTT");
-                frame.write(rightPosition, y - 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y    , "HHHH O  O  TT ");
-                frame.write(rightPosition, y + 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y + 2, "H  H  OO   TT ");
-            }
-
             frame.finish(0.25);
         }
     }
-
     public static void main(String[] args) {
         SignBoard signBoard = new SignBoard(8);
 
         // Run the sign board forever.
         while (true) {
-            ribbonScene(signBoard, 48);
-            scrollTextScene(signBoard, "###  F A L A F E L  ###");
-            ribbonScene(signBoard, 48);
-            flashFreshHotScene(signBoard, 8);
+            // ribbonScene(signBoard, 48);
+            // scrollTextScene(signBoard,  "SUSHI + CUPCAKES\nSUSHI + CUPCAKES\nSUSHI + CUPCAKES\n");
+            // ribbonScene(signBoard, 48);
+            flashSalmonScene(signBoard, 8);
         }
     }
 }
+
