@@ -66,11 +66,17 @@ int height = SignBoard.getHeight();
 int width = SignBoard.getWidth();
 ```
 
-The first of these calls will always return the height you specified when you created the `SingBoard`, but it's better to use this function to retrieve it than to code the value many times in your program.  The second call will determine the width of your actual terminal.
+The first of these calls will always return the height you specified when you created the `SingBoard`,
+but it's better to use this function to retrieve it than to code the value many times in your program.
+The second call will determine the width of your actual terminal.
 
-You'll create an animation by drawing a sequence of frames (still pictures), each for a fraction of a second.  Draw one frame by following these steps:
+You'll create an animation by drawing a sequence of frames (still pictures), each for a fraction of a second.
+Draw one frame by following these steps:
 
-1. Create a new frame.  A frame is represented as an instance of `SignBoard.Frame`.  (The syntax just means that the class `Frame` lives _inside_ the class `SignBoard`.  This is called an _inner class_.)  The sign board method `newFrame()` does this.  This also clears the screen and draws the borders.
+1. Create a new frame.  A frame is represented as an instance of `SignBoard.Frame`.
+(The syntax just means that the class `Frame` lives _inside_ the class `SignBoard`.
+This is called an _inner class_.)  The sign board method `newFrame()` does this.
+This also clears the screen and draws the borders.
 
   ```java
   SignBoard.Frame frame = board.newFrame();
@@ -82,7 +88,10 @@ You'll create an animation by drawing a sequence of frames (still pictures), eac
   frame.write(x, y, string);
   ```
   
-  `x` and `y` are integers that specify, respectively, the horizontal and vertical position to write.  For `x`, zero is the leftmost column and increasing numbers move right.  For `y`, zero is top topmost line, and increasing numbers move down.  `string` contains the text you wish to write.  You can use letters, numbers, or any sybmols you like, such as `*` or `-` or `|` to draw words, pictures, and designs.
+  `x` and `y` are integers that specify, respectively, the horizontal and vertical position to write.
+  For `x`, zero is the leftmost column and increasing numbers move right.  For `y`, zero is top topmost line,
+  and increasing numbers move down.  `string` contains the text you wish to write.  You can use letters, numbers,
+  or any sybmols you like, such as `*` or `-` or `|` to draw words, pictures, and designs.
   
 3. Finish the frame and pause for a moment.
 
