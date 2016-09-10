@@ -97,18 +97,18 @@ public class Main {
                 frame.setYellow();
             // Write a word.
             if (i % 2 == 0) {
-                frame.write(leftPosition, y - 2, "FFFF RRR  EEEE  SSS H  H");
-                frame.write(leftPosition, y - 1, "F    R RR E    SS   H  H");
-                frame.write(leftPosition, y    , "FFR  RRR  EEE   SS  HHHH");
-                frame.write(leftPosition, y + 1, "F    R R  E      SS H  H");
-                frame.write(leftPosition, y + 2, "F    R  R EEEE SSS  H  H");
+                frame.write(leftPosition, y - 2, "  SSSS U    U   SSSS H   H IIII");
+                frame.write(leftPosition, y - 1, "SS     U    U SS     H   H  II ");
+                frame.write(leftPosition, y    , "  SS   U    U   SS   HHHHH  II ");
+                frame.write(leftPosition, y + 1, "    SS  U  U      SS H   H  II ");
+                frame.write(leftPosition, y + 2, "SSSS     UU   SSSS   H   H IIII");
             }
             else {
-                frame.write(rightPosition, y - 2, "H  H  OO  TTTT");
-                frame.write(rightPosition, y - 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y    , "HHHH O  O  TT ");
-                frame.write(rightPosition, y + 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y + 2, "H  H  OO   TT ");
+                frame.write(rightPosition, y - 2, "RRRR    OOO   L     L       SSSS");
+                frame.write(rightPosition, y - 1, "R   R  O   O  L     L     SS    ");
+                frame.write(rightPosition, y    , "RRRR  O     O L     L       SS  ");
+                frame.write(rightPosition, y + 1, "R  R   O   O  L     L         SS");
+                frame.write(rightPosition, y + 2, "R   R   OOO   LLLLL LLLLL SSSS  ");
             }
 
             frame.finish(0.25);
