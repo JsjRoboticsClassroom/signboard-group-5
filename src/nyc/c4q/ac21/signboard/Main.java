@@ -156,10 +156,6 @@ public class Main {
 
 
 
-
-
-
-
     public static void main(String[] args) {
         SignBoard signBoard = new SignBoard(8);
 
