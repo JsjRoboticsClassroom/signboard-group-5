@@ -177,6 +177,30 @@ public class Main {
      * @param cycles
      *   The number of cycles to draw for.
      */
+
+    public static void scrollTextScene(SignBoard board, String text) {
+        int width = board.getWidth();
+        int y = board.getHeight() / 2;
+        for (int x = -text.length(); x <= width; ++x) {
+            SignBoard.Frame frame = board.newFrame();
+
+            if (x >= width)
+                break;
+
+            if (x < 0)
+                // Scrolling on to the left side.
+                frame.write(0, y, text.substring(-x));
+            else if (x + text.length() <= width)
+                // Fully on the board.
+                frame.write(x, y, text);
+            else
+                // Scrolling off the board.
+                frame.write(x, y, text.substring(0, width - x));
+
+            frame.finish(0.02);
+        }
+    }
+
     public static void flashSalmonScene(SignBoard board, int cycles) {
         Random random = new Random();
         int width = board.getWidth();
