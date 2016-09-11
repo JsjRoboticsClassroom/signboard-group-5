@@ -79,10 +79,10 @@ public class Main {
         Random random = new Random();
         int width = board.getWidth();
         int leftPosition = width / 4 - 12;
-        int rightPosition = 3 * width / 4 - 7;
+        int rightPosition = 2 * width / 4 - 7;
         int y = board.getHeight() / 2;
 
-        for (int i = 0; i < cycles * 2; ++i) {
+        for (int i = 0; i < cycles * 3; ++i) {
             SignBoard.Frame frame = board.newFrame();
 
             // Choose a color at random.
@@ -96,7 +96,7 @@ public class Main {
             else
                 frame.setYellow();
             // Write a word.
-            if (i % 2 == 0) {
+            if (i % 6 == 0) {
                 frame.write(leftPosition, y - 2, "  SSSS U    U   SSSS H   H IIII");
                 frame.write(leftPosition, y - 1, "SS     U    U SS     H   H  II ");
                 frame.write(leftPosition, y    , "  SS   U    U   SS   HHHHH  II ");
@@ -191,10 +191,11 @@ public class Main {
         // Run the sign board forever.
         while (true) {
             // ribbonScene(signBoard, 48);
-            // scrollTextScene(signBoard,  "SUSHI + CUPCAKES\nSUSHI + CUPCAKES\nSUSHI + CUPCAKES\n");
+            scrollTextScene(signBoard,  "***Japanese Food Is Japanese Food Because Japanese Food***");
             // ribbonScene(signBoard, 48);
-            flashSalmonScene(signBoard, 8);
+
             flashFreshHotScene(signBoard, 8);
+            flashSalmonScene(signBoard, 8);
         }
     }
 }
