@@ -95,28 +95,7 @@ public class Main {
                 frame.setWhite();
             else
                 frame.setWhite();
-            // Write a word.
 
-
-//               ,;'''''''';,           ,;;;;;;;;;;,           ,;'''''''';,
-//             ,'  ________  ',       ,;;;;;;;;;;;;;;,       ,'  ||||||||  ',
-//             ;,;'        ';,'       ;;;'        ';;'       |||'        '|||
-//               '.________.'           '.________.'           '.________.'
-
-//
-//                                           ------;;;;------       ,'' ;  ;  ;  ''|||\///
-//                    ,'  ________  ',      |______|;;|______|      ',,_;__;__;__;,'''/\\\
-//                    ;,;'        ';,'        |    |;;|    |         |   ^     ^  |
-//                      '.________.'           '.__|;;|__.'           '.___{-}__.'
-
-
-//            if (i % 2 == 0) {
-//                frame.write(leftPosition, y - 2, "  ,'' ;  ; ; ; ; ' |||\\///   ");
-//                frame.write(leftPosition, y - 1, "  ',,_;__;__;__;,_ '''/\\\\");
-//                frame.write(leftPosition, y    , "   |    ^     ^   |  ");
-//                frame.write(leftPosition, y + 1, "    '.____{-}___.'            ");
-//                frame.write(leftPosition, y + 2, "             " );
-//            }
             if (i % 3 == 0) {
                 frame.write(leftPosition, y - 3, "                      ^  ");
                 frame.write(leftPosition, y - 2, "                   /:::::\\ ");
