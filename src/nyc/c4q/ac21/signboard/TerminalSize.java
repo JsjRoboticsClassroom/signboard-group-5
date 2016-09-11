@@ -13,7 +13,7 @@ public class TerminalSize {
         try {
             // Make sure tput is connected to the TTY when running.
             Process process = Runtime.getRuntime().exec(new String[] {
-                    "bash", "-c", "/usr/bin/tput " + command + " 2> /dev/tty"});
+                "bash", "-c", "/usr/bin/tput " + command + " 2> /dev/tty"});
             Scanner scanner = new Scanner(process.getInputStream());
             int result = scanner.nextInt();
             process.waitFor();
