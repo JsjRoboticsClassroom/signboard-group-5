@@ -263,7 +263,62 @@ public class Main {
             frame.finish(0.25);
         }
     }
+    public static void eatingOnigiri(SignBoard board, int cycles) {
+        Random random = new Random();
+        int width = board.getWidth();
+        int leftPosition = width / 4 - 12;
+        int rightPosition = 3 * width / 4 - 7;
+        int y = board.getHeight() / 2;
 
+        for (int i = 0; i < cycles * 2; ++i) {
+            SignBoard.Frame frame = board.newFrame();
+
+            // Choose a color at random.
+            int color = random.nextInt(4);
+            if (color == 0)
+                frame.setWhite();
+            else if (color == 1)
+                frame.setWhite();
+            else if (color == 2)
+                frame.setWhite();
+            else
+                frame.setWhite();
+
+            if (i % 3 == 0) {
+                frame.write(leftPosition, y - 3, "                      ^  ");
+                frame.write(leftPosition, y - 2, "                   /:::::\\ ");
+                frame.write(leftPosition, y - 1, "                 /:::::::::\\  " );
+                frame.write(leftPosition, y    , "               /:::::::::::::\\ ");
+                frame.write(leftPosition, y + 1, "              /::::|     |::::\\ ");
+                frame.write(leftPosition, y + 2, "             |:::::|^   ^|:::::| ");
+                frame.write(leftPosition, y + 3, "              '.___|  3  |___.'  ");
+
+            }
+//
+            else if (i % 3 == 2) {
+
+                frame.write(leftPosition, y - 3, "                                    * *    " );
+                frame.write(leftPosition, y - 2, "                                   gurgle  *  " );
+                frame.write(leftPosition, y - 1, "                                )^   *  * " );
+                frame.write(leftPosition, y    , "                               ):::\\ ");
+                frame.write(leftPosition, y + 1, "                           )^  |::::\\ ");
+                frame.write(leftPosition, y + 2, "                       )^:x   x|:::::| ");
+                frame.write(leftPosition, y + 3, "                     .___|  -  |___.'  ");
+
+            }
+            else {
+                frame.write(leftPosition, y - 3, "                          `    *ouch!* ");
+                frame.write(leftPosition, y - 2, "                        ):::::\\    *  ");
+                frame.write(leftPosition, y - 1, "                       ^:::::::\\ ");
+                frame.write(leftPosition, y,     "                     )::::::::::\\ ");
+                frame.write(leftPosition, y + 1, "                    ^:|     |::::\\ ");
+                frame.write(leftPosition, y + 2, "                   )::|>   <|:::::|  ");
+                frame.write(leftPosition, y + 3, "                 '.___|  ~  |___.'  ");
+            }
+
+            frame.finish(0.35);
+        }
+    }
     public static void main(String[] args) {
         SignBoard signBoard = new SignBoard(8);
 
@@ -275,6 +330,7 @@ public class Main {
             flashFreshHotScene_M(signBoard, 8);
             flashFreshHotScene(signBoard, 8);
             flashSalmonScene(signBoard, 8);
+            eatingOnigiri(signBoard, 8);
         }
     }
 }
