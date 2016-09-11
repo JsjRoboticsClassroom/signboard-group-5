@@ -135,7 +135,7 @@ public class Main {
                     y = 2 * height - y - 2;
                 if (0 < x) {
                     frame.setYellow();
-                    frame.write(x, y, "-");
+                    frame.write(x, y, "*");
                 }
                 if (0 < x + 1 && x + 1 < width) {
                     frame.setYellow();
@@ -180,7 +180,7 @@ public class Main {
 
     public static void scrollTextScene(SignBoard board, String text) {
         int width = board.getWidth();
-        int y = (board.getHeight() / 2) - 3;//ORIGINALLY DIDNT HAVE -3
+        int y = board.getHeight() / 2;
         for (int x = -text.length(); x <= width; ++x) {
             SignBoard.Frame frame = board.newFrame();
 
@@ -214,9 +214,9 @@ public class Main {
             // Choose a color at random.
             int color = random.nextInt(4);
             if (color == 0)
-                frame.setWhite();
+                frame.setGreen();
             else if (color == 1)
-                frame.setWhite();
+                frame.setRed();
             else if (color == 2)
                 frame.setWhite();
             else
